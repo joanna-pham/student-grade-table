@@ -3,9 +3,10 @@ class App {
     console.log(error)
   }
   handleGetGradesSuccess(grades) {
-    console.log(grades)
+    this.gradeTable.updateGrades(grades) //pass its grades parameter to the updateGrades() method of the gradeTable property of the this object (instead of logging grades to the console).
   }
-  constructor() {
+  constructor(gradeTable) {
+    this.gradeTable = gradeTable;
     this.handleGetGradesError = this.handleGetGradesError.bind(this);
     this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
   }
