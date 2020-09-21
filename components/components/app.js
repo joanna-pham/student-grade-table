@@ -18,7 +18,7 @@ class App {
       {
         "X-Access-Token": "ikR9rthn"
       },
-      success: this.handleGetGradesSuccess,
+      success: this.handleGetGradesSuccess, //use this object to call the function
       error: this.handleGetGradesError
     })
   }
