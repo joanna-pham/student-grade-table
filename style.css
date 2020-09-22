@@ -7,3 +7,11 @@ table {
 thead {
   background-color: #CCCCCC;
 }
+
+/* .col {
+  border: 3px solid blue;
+} */
+
+span {
+  width: 42px;
+}
