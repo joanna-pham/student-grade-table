@@ -15,6 +15,5 @@ class GradeForm{
     var formDataGrade = formData.get('grade');
     this.createGrade(formDataName, formDataCourse, formDataGrade)
     event.target.reset();
-    // console.log("handleSubmit called")
   }
 }

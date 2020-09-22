@@ -8,6 +8,10 @@ thead {
   background-color: #CCCCCC;
 }
 
-.col {
+/* .col {
   border: 3px solid blue;
+} */
+
+span {
+  width: 42px;
 }
