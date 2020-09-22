@@ -6,6 +6,7 @@ class GradeTable {
     var tableBodyElt = this.tableElement.querySelector('#tableBody'); //searches a particular part of the document instead of the whole thing
     tableBodyElt.textContent = ""; //empty contents in element
     for (var i = 0; i < grades.length; i++) {
+      var element = this.renderGradeRow(grades[i])
       //create <tr> element
       var tableRowElt = document.createElement('tr');
 
@@ -27,6 +28,40 @@ class GradeTable {
       //append <tr> to <tbody>
       tableBodyElt.appendChild(tableRowElt);
     }
+  }
+  onDeleteClick(deleteGrade) {
+    this.onDeleteClick;
+  }
+  renderGradeRow(data, deleteGrade) {
+    //data is a single grade object
+    //deleteGrade will be a function
+    var tableBodyElt = this.tableElement.querySelector('#tableBody')
+
+    var trElt = document.createElement('tr');
+    var tdNameElt = document.createElement('td');
+    var tdCourseElt = document.createElement('td');
+    var tdGradeElt = document.createElement('td');
+    var tdBtnElt = document.createElement('td');
+    var btnElt = document.createElement('button')
+
+    btnElt.textContent = "Delete";
+
+    tdBtnElt.append(btnElt);
+    trElt.appendChild(tdNameElt);
+    trElt.appendChild(tdCourseElt);
+    trElt.appendChild(tdGradeElt);
+    trElt.appendChild(tdBtnElt);
+    console.log(trElt)
+    tableBodyElt.appendChild(trElt);
+
+    tdNameElt.textContent = data['name'];
+    tdCourseElt.textContent = data['course'];
+    tdGradeElt.textContent = data['grade'];
+
+    btnElt.addEventListener('click', function () {
+      deleteGrade(data.id)
+    })
+    return trElt
   }
 }
   // var gradeName = "name";
