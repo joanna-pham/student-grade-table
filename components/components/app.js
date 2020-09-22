@@ -10,6 +10,19 @@ class App {
   }
   handleGetGradesSuccess(grades) {
     this.gradeTable.updateGrades(grades) //pass its grades parameter to the updateGrades() method of the gradeTable property of the this object (instead of logging grades to the console).
+    //to find avg grades: look at all the grades
+    //--create an empty storage for sum
+    //for each grade in the list of grades provided
+    //--add the value of the current grade to the storage for the total
+    //--add all the grades and put into an empty storage
+    //--divide sum by the number of grades there
+
+    var sum = 0;
+    for (var i = 0; i < grades.length; i++){
+      sum += grades[i].grade
+    }
+    var average = sum / grades.length
+    console.log(average)
   }
   getGrades() {
     $.ajax({
