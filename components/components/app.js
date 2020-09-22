@@ -22,8 +22,6 @@ class App {
       sum += grades[i].grade
     }
     var average = sum / grades.length
-    console.log(this.gradeTable)
-    console.log(this.pageHeader)
     this.pageHeader.updateAverage(average) //pass the computed average to the updateAverage method of the pageHeader property of the this object.
   }
   getGrades() {
