@@ -7,32 +7,33 @@ class GradeTable {
     var tableBodyElt = this.tableElement.querySelector('#tableBody'); //searches a particular part of the document instead of the whole thing
     tableBodyElt.textContent = ""; //empty contents in element
     for (var i = 0; i < grades.length; i++) {
-      var element = this.renderGradeRow(grades[i])
-      // var element = this.renderGradeRow(this.deleteGrade)
-      var tableRowElt = document.createElement('tr');
+      // var element = this.renderGradeRow(grades[i], this.deleteGrade)
+      this.renderGradeRow(grades[i], this.deleteGrade)
 
+      // var tableRowElt = document.createElement('tr');
+      // var tableDataName = document.createElement('td');
+      // tableDataName.textContent = grades[i]['name'];
 
-      var tableDataName = document.createElement('td');
-      tableDataName.textContent = grades[i]['name'];
+      // var tableDataCourse = document.createElement('td');
+      // tableDataCourse.textContent = grades[i].course;
 
-      var tableDataCourse = document.createElement('td');
-      tableDataCourse.textContent = grades[i].course;
+      // var tableDataGrade = document.createElement('td');
+      // tableDataGrade.textContent = grades[i]['grade'];
 
-      var tableDataGrade = document.createElement('td');
-      tableDataGrade.textContent = grades[i]['grade'];
-
-      tableRowElt.appendChild(tableDataName);
-      tableRowElt.appendChild(tableDataCourse);
-      tableRowElt.appendChild(tableDataGrade);
-      tableBodyElt.appendChild(tableRowElt);
-      if (!grades) {
-        var pElt = document.querySelector('d-none');
-        pElt.classList.remove('d-none')
-      }
+      // tableRowElt.appendChild(tableDataName);
+      // tableRowElt.appendChild(tableDataCourse);
+      // tableRowElt.appendChild(tableDataGrade);
+      // tableBodyElt.appendChild(tableRowElt);
+    }
+    if (!grades.length){
+      var pElt = document.getElementById('gradesRecord');
+      pElt.classList.remove('d-none')
+    } else {
+      pElt.classList.add('d-none')
     }
   }
-  onDeleteClick(deleteGrade) {
-    this.onDeleteClick;
+  onDeleteClick(deleteGrade) { //named onDeleteClick that accepts a parameter, deleteGrade...
+    this.deleteGrade = deleteGrade; //...and stores it as a property of the this object
   }
   renderGradeRow(data, deleteGrade) {
     //data is a single grade object
