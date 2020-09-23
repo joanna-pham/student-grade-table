@@ -1,17 +1,17 @@
 class GradeTable {
-  constructor(tableElement) {
+  constructor(tableElement, noGradesElement) {
     this.tableElement = tableElement;
+    this.noGradesElement = noGradesElement;
   }
   updateGrades(grades) {
     var tableBodyElt = this.tableElement.querySelector('#tableBody'); //searches a particular part of the document instead of the whole thing
     tableBodyElt.textContent = ""; //empty contents in element
     for (var i = 0; i < grades.length; i++) {
       var element = this.renderGradeRow(grades[i])
-      //create <tr> element
+      // var element = this.renderGradeRow(this.deleteGrade)
       var tableRowElt = document.createElement('tr');
 
-      //create <td>
-      //add textContent
+
       var tableDataName = document.createElement('td');
       tableDataName.textContent = grades[i]['name'];
 
@@ -21,12 +21,14 @@ class GradeTable {
       var tableDataGrade = document.createElement('td');
       tableDataGrade.textContent = grades[i]['grade'];
 
-      //append <td> to <tr>
       tableRowElt.appendChild(tableDataName);
       tableRowElt.appendChild(tableDataCourse);
       tableRowElt.appendChild(tableDataGrade);
-      //append <tr> to <tbody>
       tableBodyElt.appendChild(tableRowElt);
+      if (!grades) {
+        var pElt = document.querySelector('d-none');
+        pElt.classList.remove('d-none')
+      }
     }
   }
   onDeleteClick(deleteGrade) {
@@ -51,7 +53,6 @@ class GradeTable {
     trElt.appendChild(tdCourseElt);
     trElt.appendChild(tdGradeElt);
     trElt.appendChild(tdBtnElt);
-    console.log(trElt)
     tableBodyElt.appendChild(trElt);
 
     tdNameElt.textContent = data['name'];
