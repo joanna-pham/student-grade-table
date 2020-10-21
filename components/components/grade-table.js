@@ -26,11 +26,13 @@ class GradeTable {
       // tableBodyElt.appendChild(tableRowElt);
     }
     if (!grades.length){
+      console.log("!grades.length", !grades.length)
       var pElt = document.getElementById('gradesRecord');
       pElt.classList.remove('d-none')
-    } else {
-      pElt.classList.add('d-none')
     }
+    // } else {
+    //   pElt.classList.add('d-none')
+    // }
   }
   onDeleteClick(deleteGrade) { //named onDeleteClick that accepts a parameter, deleteGrade...
     this.deleteGrade = deleteGrade; //...and stores it as a property of the this object
