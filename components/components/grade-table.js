@@ -1,32 +1,71 @@
 class GradeTable {
-  constructor(tableElement) {
+  constructor(tableElement, noGradesElement) {
     this.tableElement = tableElement;
+    this.noGradesElement = noGradesElement;
   }
   updateGrades(grades) {
     var tableBodyElt = this.tableElement.querySelector('#tableBody'); //searches a particular part of the document instead of the whole thing
     tableBodyElt.textContent = ""; //empty contents in element
     for (var i = 0; i < grades.length; i++) {
-      //create <tr> element
-      var tableRowElt = document.createElement('tr');
+      // var element = this.renderGradeRow(grades[i], this.deleteGrade)
+      this.renderGradeRow(grades[i], this.deleteGrade)
 
-      //create <td>
-      //add textContent
-      var tableDataName = document.createElement('td');
-      tableDataName.textContent = grades[i]['name'];
+      // var tableRowElt = document.createElement('tr');
+      // var tableDataName = document.createElement('td');
+      // tableDataName.textContent = grades[i]['name'];
 
-      var tableDataCourse = document.createElement('td');
-      tableDataCourse.textContent = grades[i].course;
+      // var tableDataCourse = document.createElement('td');
+      // tableDataCourse.textContent = grades[i].course;
 
-      var tableDataGrade = document.createElement('td');
-      tableDataGrade.textContent = grades[i]['grade'];
+      // var tableDataGrade = document.createElement('td');
+      // tableDataGrade.textContent = grades[i]['grade'];
 
-      //append <td> to <tr>
-      tableRowElt.appendChild(tableDataName);
-      tableRowElt.appendChild(tableDataCourse);
-      tableRowElt.appendChild(tableDataGrade);
-      //append <tr> to <tbody>
-      tableBodyElt.appendChild(tableRowElt);
+      // tableRowElt.appendChild(tableDataName);
+      // tableRowElt.appendChild(tableDataCourse);
+      // tableRowElt.appendChild(tableDataGrade);
+      // tableBodyElt.appendChild(tableRowElt);
     }
+    if (!grades.length){
+      console.log("!grades.length", !grades.length)
+      var pElt = document.getElementById('gradesRecord');
+      pElt.classList.remove('d-none')
+    }
+    // } else {
+    //   pElt.classList.add('d-none')
+    // }
+  }
+  onDeleteClick(deleteGrade) { //named onDeleteClick that accepts a parameter, deleteGrade...
+    this.deleteGrade = deleteGrade; //...and stores it as a property of the this object
+  }
+  renderGradeRow(data, deleteGrade) {
+    //data is a single grade object
+    //deleteGrade will be a function
+    var tableBodyElt = this.tableElement.querySelector('#tableBody')
+
+    var trElt = document.createElement('tr');
+    var tdNameElt = document.createElement('td');
+    var tdCourseElt = document.createElement('td');
+    var tdGradeElt = document.createElement('td');
+    var tdBtnElt = document.createElement('td');
+    var btnElt = document.createElement('button')
+
+    btnElt.textContent = "Delete";
+
+    tdBtnElt.append(btnElt);
+    trElt.appendChild(tdNameElt);
+    trElt.appendChild(tdCourseElt);
+    trElt.appendChild(tdGradeElt);
+    trElt.appendChild(tdBtnElt);
+    tableBodyElt.appendChild(trElt);
+
+    tdNameElt.textContent = data['name'];
+    tdCourseElt.textContent = data['course'];
+    tdGradeElt.textContent = data['grade'];
+
+    btnElt.addEventListener('click', function () {
+      deleteGrade(data.id)
+    })
+    return trElt
   }
 }
   // var gradeName = "name";

@@ -1,8 +1,9 @@
 var tableElt = document.getElementById('tableInfo') //query the document == searching the DOM for it
 var headerElt = document.querySelector('header');
 var formElt = document.querySelector('form')
+var pElement = document.getElementById('gradesRecord');
 
-var studentGradeTable = new GradeTable(tableElt)
+var studentGradeTable = new GradeTable(tableElt, pElement)
 var pageHeader = new PageHeader(headerElt);
 var gradingForm = new GradeForm(formElt);
 
