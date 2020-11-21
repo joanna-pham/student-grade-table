@@ -85,11 +85,3 @@ class App {
     this.getGrades();
   }
 }
-
-
-    //to find avg grades: look at all the grades
-    //--create an empty storage for sum
-    //for each grade in the list of grades provided
-    //--add the value of the current grade to the storage for the total
-    //--add all the grades and put into an empty storage
-    //--divide sum by the number of grades there

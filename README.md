@@ -12,5 +12,7 @@ An interactive JavaScript application that communicates with a server to manage 
 * User can view all grades
 * User can view the average grade
 * User can add a grade
+* User can delete a grade
 
-##
+## Preview
+![screenshot](preview.png)
